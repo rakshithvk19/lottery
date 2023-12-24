@@ -1,0 +1,69 @@
+1. Home/Landing Page:
+
+https://blueforestfarms.com/
+
+- Appbar -- link to FAQ
+- CTA
+- Info
+- reviews
+- newsletter for latest updates on new lotterys
+- footer
+
+- Introduce users to your application.
+- Provide a brief overview of the lottery and its rules.
+- Include any promotional content.
+
+2. Lottery Ticket Purchase Page:
+
+   - Allow users to select and purchase lottery tickets.
+   - Provide options for choosing numbers, quantity, and other relevant parameters.
+   - Display the cost and payment options.
+
+3. Ticket Confirmation Page:
+
+   - Confirm the details of the purchased tickets.
+   - Display a summary, including selected numbers, quantity, and total cost.
+   - Provide a confirmation message.
+
+4. User Account Dashboard:
+
+   - Allow users to view their account information.
+   - Display a summary of their purchased tickets.
+   - Show account balance and transaction history.
+
+5. Results Page:
+
+   - Display the results of the lottery draw.
+   - Highlight winning numbers.
+   - Provide information on different prize tiers.
+
+6. Prize Claim Page:
+
+   - If applicable, create a page for users to claim their prizes.
+   - Include instructions on the prize claim process.
+
+7. User Profile Page:
+
+   - Allow users to manage their profile information.
+   - Provide options for updating personal details, password, etc.
+
+8. FAQ/Help Page:
+
+   - Address frequently asked questions.
+   - Provide support and contact information.
+
+9. About Us Page:
+
+   - Share information about the lottery organization.
+   - Include details about the purpose, regulations, and any charitable aspects.
+
+10. Terms and Conditions/Privacy Policy Page:
+
+    - Ensure legal compliance by including pages with terms and conditions and privacy policy information.
+
+11. Authentication Pages:
+
+    - Login and registration pages for user authentication.
+
+12. Error Pages:
+    - Create custom error pages for 404 (not found) and other potential errors.
