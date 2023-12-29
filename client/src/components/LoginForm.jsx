@@ -17,8 +17,17 @@ function LoginForm() {
     >
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="h4" component="h4" align="center">
-            Lottery
+          <Typography
+            variant="h4"
+            component="h4"
+            align="center"
+            sx={{
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+            }}
+          >
+            LOTTERY
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -33,8 +42,15 @@ function LoginForm() {
             required
           />
         </Grid>
-        <Grid item xs={12}>
-          <Link to="/Forgot_Password">Forgot password ?</Link>
+        <Grid item xs={6}>
+          <Link to="/Forgot_Password" style={{ textDecoration: "none" }}>
+            Forgot password ?
+          </Link>
+        </Grid>
+        <Grid item xs={6} sx={{ display: "flex", justifyContent: "end" }}>
+          <Link to="/Register" style={{ textDecoration: "none" }}>
+            Create an account
+          </Link>
         </Grid>
         <Grid item xs={12}>
           <Button variant="contained">Submit</Button>
