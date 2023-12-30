@@ -8,7 +8,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { FormControl, InputLabel, Select } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import Avatar from "@mui/material/Avatar";
 
 function SignupForm() {
   return (
@@ -33,9 +34,34 @@ function SignupForm() {
           >
             Create Account
           </Typography>
-          <Grid item xs={12}>
-            Profile picture
-          </Grid>
+        </Grid>
+        <Grid item xs={12} align={"center"}>
+          <input
+            id="profile-picture-input"
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            // onChange={handleFileChange}
+          />
+          <Avatar
+            alt="Profile Picture"
+            // src={profilePicture}
+            sx={{
+              height: "10rem",
+              width: "10rem",
+              cursor: "pointer",
+              margin: "1rem",
+            }}
+            // onClick={handleAvatarClick}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            sx={{ height: "2rem", width: "10rem" }}
+            // onClick={handleAvatarClick}
+          >
+            Add Picture
+          </Button>
         </Grid>
         <Grid item xs={6}>
           <TextField label="First Name" variant="outlined" required fullWidth />
