@@ -66,6 +66,29 @@ It is used to update the state of the Ethereum network.
 7. MaxPriorityFeePerGas -->
 8. Data/ Transcation Input / init --> For normal value transfers, this field is typically empty. For contract calls, this field contains the input data required for the smart contract to execute specific functions.
 
+# Storage
+
+In Ethereum, a contract has three types of storage:
+
+1. Storage:
+   i.Persistant data storage --> contract’s long-term memory area that stores variables even after a function or a transaction is done executing.
+   ii.A contract’s state variables (i.e. variables declared inside a contract, but not inside a function) are stored in the `storage` memory area.
+   iii. In other programming environments, if we want to store data in the long term, we pawn this off to database or a file system, a smart contract’s code and data are both persisted together long-term on the blockchain.
+   iv.Variables stored in storage are tamper proof via the cryptographic-sealing properties that blockchains give us.
+   v. Each contact gets its own `storage` which is PERSISTANT and READ-WRITE data into it.
+   vi. Contracts can read and write into its own `storage` only.
+   vii. A contract’s `storage` is divided up into 2²⁵⁶ slots of 32 bytes each and are referenced by indexes, starting at 0 and ending at 2²⁵⁶.
+2. Memory: Temporary data storage that exists during function execution and is erased after the function execution completes.
+3. Stack / Calldata:
+   i. Used to stored the arguments passed to a function, in a specific part of the memory.
+   ii. Storage is read-only, so immutable and its much secure.
+   iii. Accessing data from calldata is much more gas-efficient -- how? --> Since calldata is read-only and its content cannot be changed, operations on calldata tend to consume less gas than operations on other types of storage.
+   Note: Functions having `external` modifiers, automatically have their parameters stored as `calldata`.
+   iv. external functions have their parameters stored in `calldata`.
+   whats the advantage?
+   i. creates a standardized way to interact between different contracts in the blockchain.
+   ii.since calldata is a readonly field, external contracts can use the data, without the worry of the parameters changing during execution and maintaining integrity.
+
 # Validator
 
 # Gas
@@ -76,3 +99,5 @@ It is used to update the state of the Ethereum network.
    Modifiers are commonly used for access control, input validation, or other common checks. They help improve code readability, maintainability, and the overall security of smart contracts.
 
 2. Require --> it is same like if else, BUT they reverse the transaction if the condition fails, hence being more gas efficient.
+
+3. Mapping --> its used to declare a data structure that associates keys with values. It is similar to a hash table or dictionary in other programming languages.
