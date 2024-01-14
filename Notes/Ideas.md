@@ -53,3 +53,4 @@ Consider what happens if the contract has more than 10 players, but not enough t
 Remember that the specific requirements and edge cases can vary based on the intended use and design of your lottery contract. Always thoroughly test and audit your contract, and consider seeking external code reviews for security and best practices.
 
 11. Fallback function, what happens to an address, once created, can it be destroyed?
+12. Implementing scalability of the contact?

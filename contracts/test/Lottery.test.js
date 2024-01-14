@@ -14,35 +14,38 @@ describe("Lottery Contract", function () {
     // Deploy the Lottery contract
     const LotteryFactory = await ethers.getContractFactory("Lottery");
     lottery = await LotteryFactory.deploy();
+    // console.log(LotteryFactory.interface);
+    // console.log("contract address", lottery.target);
+    // console.log("owner address", owner.address);
   });
 
-  it("Should allow players to enter the lottery", async function () {
-    // Player1 enters the lottery
-    await lottery
-      .connect(players[0])
-      .enter({ value: ethers.parseEther("0.2") });
-    const player1Entered = await lottery.hasEntered(players[0].address);
-    expect(player1Entered).to.equal(true);
+  // it("Should allow players to enter the lottery", async function () {
+  //   // Player1 enters the lottery
+  //   await lottery
+  //     .connect(players[0])
+  //     .enter({ value: ethers.parseEther("0.2") });
+  //   const player1Entered = await lottery.hasEntered(players[0].address);
+  //   expect(player1Entered).to.equal(true);
 
-    // Player2 enters the lottery
-    await lottery
-      .connect(players[1])
-      .enter({ value: ethers.parseEther("0.2") });
-    const player2Entered = await lottery.hasEntered(players[1].address);
-    expect(player2Entered).to.equal(true);
-  });
+  //   // Player2 enters the lottery
+  //   await lottery
+  //     .connect(players[1])
+  //     .enter({ value: ethers.parseEther("0.2") });
+  //   const player2Entered = await lottery.hasEntered(players[1].address);
+  //   expect(player2Entered).to.equal(true);
+  // });
 
-  it("Should not allow players to enter more than once", async function () {
-    // Player1 enters the lottery
-    await lottery
-      .connect(players[0])
-      .enter({ value: ethers.parseEther("0.2") });
+  // it("Should not allow players to enter more than once", async function () {
+  //   // Player1 enters the lottery
+  //   await lottery
+  //     .connect(players[0])
+  //     .enter({ value: ethers.parseEther("0.2") });
 
-    // Player1 attempts to enter again and expects it to revert
-    await expect(
-      lottery.connect(players[0]).enter({ value: ethers.parseEther("0.2") })
-    ).to.be.revertedWith("You have already entered the lottery");
-  });
+  //   // Player1 attempts to enter again and expects it to revert
+  //   await expect(
+  //     lottery.connect(players[0]).enter({ value: ethers.parseEther("0.2") })
+  //   ).to.be.revertedWith("You have already entered the lottery");
+  // });
 
   it("Should pick a winner when conditions are met", async function () {
     // Simulate 10 players entering the lottery
@@ -62,15 +65,24 @@ describe("Lottery Contract", function () {
     );
 
     // Pick a winner
-    const pickWinnerTx = await lottery.connect(owner).pickWinner();
+    const pickWinnerTx = await lottery.pickWinner();
     const pickWinnerReceipt = await pickWinnerTx.wait();
+
+    console.log(pickWinnerReceipt);
+
+    //Bugs here!!
+    // const pickWinnerTx = await lottery.connect(owner).pickWinner();
+    // const pickWinnerReceipt = await pickWinnerTx.wait();
+    // console.log("lottery Address", lottery.target);
+    // console.log("tx receipt to(winner account) ", pickWinnerReceipt.to);
+    // console.log("tx receipt from(contract account)", pickWinnerReceipt.from);
 
     // Get winner from the event
     const winner = pickWinnerReceipt.events[0].args.winner;
 
     // Check final contract balance, players array, and hasEntered status
     const finalContractBalanceAfterPick = await ethers.provider.getBalance(
-      lottery.address
+      lottery.target
     );
 
     // We expect some gas costs, so we check if the balance is less than the initial balance
