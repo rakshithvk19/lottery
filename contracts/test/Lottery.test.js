@@ -15,8 +15,8 @@ describe("Lottery Contract", function () {
     const LotteryFactory = await ethers.getContractFactory("Lottery");
     lottery = await LotteryFactory.deploy();
     // console.log(LotteryFactory.interface);
-    // console.log("contract address", lottery.target);
-    // console.log("owner address", owner.address);
+    console.log("contract address", lottery.target);
+    console.log("owner address", owner.address);
   });
 
   // it("Should allow players to enter the lottery", async function () {
@@ -66,9 +66,9 @@ describe("Lottery Contract", function () {
 
     // Pick a winner
     const pickWinnerTx = await lottery.pickWinner();
-    const pickWinnerReceipt = await pickWinnerTx.wait();
+    // const pickWinnerReceipt = await pickWinnerTx.wait();
 
-    console.log(pickWinnerReceipt);
+    console.log(pickWinnerTx, "winner address");
 
     //Bugs here!!
     // const pickWinnerTx = await lottery.connect(owner).pickWinner();

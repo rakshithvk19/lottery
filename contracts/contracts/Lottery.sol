@@ -1,5 +1,9 @@
+// Author: @rakshithvk19
+// Version: 1.0
+
 // SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.23;
+import "@openzeppelin/contracts/utils/Strings.sol";
 
 contract Lottery {
     address public owner; // Contract owner's address
@@ -44,10 +48,10 @@ contract Lottery {
     }
 
     // Pick winner from the player pool
-    function pickWinner() public onlyOwner {
+    function pickWinner() public onlyOwner returns (string memory) {
         // Require that there are at least 10 players to pick a winner
         require(
-            players.length >= 10,
+            players.length >= 2,
             "There must be at least 10 players to pick a winner"
         );
 
@@ -56,7 +60,7 @@ contract Lottery {
 
         // Require that the contract balance should have at least 10 ether to pick the winner
         require(
-            contractBalance >= 10 ether,
+            contractBalance >= 2 ether,
             "Insufficient funds to pick the winner"
         );
 
@@ -76,6 +80,8 @@ contract Lottery {
         for (uint i = 0; i < players.length; i++) {
             hasEntered[players[i]] = false;
         }
+
+        return Strings.toHexString(winner);
     }
 
     // Modifier function to check if the caller is the owner

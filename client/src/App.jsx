@@ -6,6 +6,7 @@ import FAQ from "./pages/FAQ";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
+import Purchase from "./pages/Purchase";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Forgot_Password" element={<ForgotPassword />} />
+        <Route path="/Purchase" element={<Purchase />} />
       </Routes>
     </>
   );
